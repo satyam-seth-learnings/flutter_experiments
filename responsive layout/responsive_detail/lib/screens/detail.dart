@@ -12,13 +12,13 @@ class DetailScreen extends StatefulWidget {
 class _DetailScreenState extends State<DetailScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Container(
+    return Container(
+      alignment: Alignment.center,
       color: Colors.deepPurpleAccent,
       child: ElevatedButton(
         onPressed: () => widget.onPressed(),
         child: const Text('Close'),
       ),
-    ));
+    );
   }
 }

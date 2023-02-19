@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
-import '../screens/tab.dart';
+import '../screens/detail.dart';
 
 class StackedWidget extends StatefulWidget {
   const StackedWidget(
@@ -20,22 +20,16 @@ class StackedWidget extends StatefulWidget {
 class _StackedWidgetState extends State<StackedWidget> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Scaffold(
-        body: SizedBox(
-          height: double.maxFinite,
-          width: double.maxFinite,
-          child: Stack(
-            children: [
-              widget.backgroundWidget,
-              Visibility(
-                visible: widget.isOpened,
-                child: TabbedScreen(onPressed: widget.onPressed),
-              )
-            ],
-          ),
-        ),
+    return Expanded(
+      child: Stack(
+        children: [
+          widget.backgroundWidget,
+          Visibility(
+            visible: widget.isOpened,
+            child: DetailScreen(onPressed: widget.onPressed),
+          )
+        ],
       ),
-    );
+    ); //SizedBox
   }
 }

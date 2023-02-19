@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_detail/screens/intro.dart';
-
-import 'screens/tab.dart';
-import 'widgets/stacked.dart';
+import 'package:responsive_detail/screens/tab.dart';
+import 'package:responsive_detail/widgets/stacked.dart';
 
 class ResponsiveWidget extends StatefulWidget {
   const ResponsiveWidget({super.key});
@@ -45,7 +44,13 @@ class _ResponsiveWidgetState extends State<ResponsiveWidget> {
             )
           ]);
         } else {
-          return TabbedScreen(onPressed: onPressed);
+          return StackedWidget(
+            backgroundWidget: Expanded(
+              child: TabbedScreen(onPressed: onPressed),
+            ),
+            isOpened: isOpened,
+            onPressed: onPressed,
+          );
         }
       }),
     );
