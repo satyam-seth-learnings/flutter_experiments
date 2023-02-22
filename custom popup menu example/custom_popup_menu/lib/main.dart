@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'widgets/more_option.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -48,6 +50,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 fontWeight: FontWeight.w500,
               ),
             ),
+
+            /// use our custom popup menu
+            MoreOption(),
           ],
         ),
       ),
