@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'widgets/about_widget.dart';
-import 'widgets/header_widget.dart';
-import 'widgets/tab_widget.dart';
+import '../widgets/about_widget.dart';
+import '../widgets/header_widget.dart';
+import '../widgets/tab_widget.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class FirstExample extends StatelessWidget {
+  const FirstExample({super.key});
 
   @override
   Widget build(BuildContext context) {
