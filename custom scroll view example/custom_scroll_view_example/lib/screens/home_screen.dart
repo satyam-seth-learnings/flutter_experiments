@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'first_example.dart';
+import 'fourth_example.dart';
 import 'second_example.dart';
 import 'third_example.dart';
 
@@ -51,6 +52,14 @@ class HomePage extends StatelessWidget {
     );
   }
 
+  Widget _fourthExampleButton(BuildContext context) {
+    return _exampleButton(
+      context: context,
+      title: 'Fourth Example',
+      builder: (context) => const FourthExample(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,6 +73,7 @@ class HomePage extends StatelessWidget {
               _firstExampleButton(context),
               _secondExampleButton(context),
               _thirdExampleButton(context),
+              _fourthExampleButton(context),
             ],
           ),
         ),
