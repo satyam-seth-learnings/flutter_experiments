@@ -1,46 +1,69 @@
 import 'package:flutter/material.dart';
 
 import 'first_example.dart';
+import 'fourth_example.dart';
 import 'second_example.dart';
+import 'third_example.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
-  Widget _firstExampleButton(BuildContext context) {
+  Widget _exampleButton({
+    required BuildContext context,
+    required String title,
+    required WidgetBuilder builder,
+  }) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: ElevatedButton(
         onPressed: () {
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (context) => const FirstExample(),
+              builder: builder,
             ),
           );
         },
-        child: const Text('First Example'),
+        child: Text(title),
       ),
     );
   }
 
+  Widget _firstExampleButton(BuildContext context) {
+    return _exampleButton(
+      context: context,
+      title: 'First Example',
+      builder: (context) => const FirstExample(),
+    );
+  }
+
   Widget _secondExampleButton(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: ElevatedButton(
-        onPressed: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => const SecondExample(),
-            ),
-          );
-        },
-        child: const Text('Second Example'),
-      ),
+    return _exampleButton(
+      context: context,
+      title: 'Second Example',
+      builder: (context) => const SecondExample(),
+    );
+  }
+
+  Widget _thirdExampleButton(BuildContext context) {
+    return _exampleButton(
+      context: context,
+      title: 'Third Example',
+      builder: (context) => const ThirdExample(),
+    );
+  }
+
+  Widget _fourthExampleButton(BuildContext context) {
+    return _exampleButton(
+      context: context,
+      title: 'Fourth Example',
+      builder: (context) => const FourthExample(),
     );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black87,
       body: SafeArea(
         child: Center(
           child: Column(
@@ -49,6 +72,8 @@ class HomePage extends StatelessWidget {
             children: [
               _firstExampleButton(context),
               _secondExampleButton(context),
+              _thirdExampleButton(context),
+              _fourthExampleButton(context),
             ],
           ),
         ),
