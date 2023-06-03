@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../blocs/movie_bloc.dart';
+import '../blocs/movie_detail_bloc_provider.dart';
 import '../models/item_model.dart';
+import 'movie_detail.dart';
 
 class MovieList extends StatefulWidget {
   const MovieList({super.key});
@@ -51,11 +53,34 @@ class MovieListState extends State<MovieList> {
             const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
         itemBuilder: (BuildContext context, int index) {
           return GridTile(
-            child: Image.network(
-              'https://image.tmdb.org/t/p/w185${snapshot.data!.results![index].posterPath!}',
-              fit: BoxFit.cover,
+            child: InkResponse(
+              enableFeedback: true,
+              child: Image.network(
+                'https://image.tmdb.org/t/p/w185${snapshot.data!.results![index].posterPath}',
+                fit: BoxFit.cover,
+              ),
+              onTap: () => openDetailPage(snapshot.data!, index),
             ),
           );
         });
+  }
+
+  openDetailPage(ItemModel data, int index) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) {
+        return MovieDetailBlocProvider(
+          key: const Key('movie-detail'),
+          child: MovieDetail(
+            title: data.results![index].title!,
+            posterUrl: data.results![index].backdropPath,
+            description: data.results![index].overview,
+            releaseDate: data.results![index].releaseDate,
+            voteAverage: data.results![index].voteAverage.toString(),
+            movieId: data.results![index].id!,
+          ),
+        );
+      }),
+    );
   }
 }
